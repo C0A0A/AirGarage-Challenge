@@ -18,7 +18,7 @@ server.use(
 			'X-Requested-With',
 			'Content-Type',
 			'Accept',
-			'authorization',
+			'Authorization',
 		],
 	})
 );
