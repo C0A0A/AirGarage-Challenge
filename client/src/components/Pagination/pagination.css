@@ -1,0 +1,16 @@
+.page-current {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 0.5rem;
+	border-color: transparent;
+	margin: 0.5rem;
+	cursor: pointer;
+}
+
+.page-current:hover {
+	transform: scale(1.1);
+}
+
+.page-not-current {
+	background-color: #ffdb91;
+}
