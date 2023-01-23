@@ -6,6 +6,7 @@ const cors = require('cors');
 const routes = require('./routes/index.js');
 const errors = require('./middlewares/errors.js');
 
+server.set('trust proxy', true);
 server.use(express.json());
 server.use(morgan('dev'));
 server.use(
@@ -18,11 +19,10 @@ server.use(
 			'X-Requested-With',
 			'Content-Type',
 			'Accept',
-			'Authorization',
-		],
+			'Authorization'
+		]
 	})
 );
-
 server.use('/', routes);
 server.use(errors);
 

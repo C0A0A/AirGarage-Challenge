@@ -5,10 +5,11 @@ const apiKey = process.env.GEO_API_KEY;
 const getGeolocalization = async (ipAddress) => {
 	try {
 		const {data} = await axios.get(
-			`${baseUrl}?api_key=${apiKey}&ip_address=${ipAddress}`
+			`${baseUrl}?api_key=${apiKey}&ip_address=` + ipAddress
 		);
 		return data;
 	} catch (err) {
+		console.log(err);
 		return {};
 	}
 };

@@ -1,23 +1,23 @@
 const {makeRequest} = require('../utils/apiRequest.js');
 const {mapper, filter} = require('../utils/dataHandlers.js');
 const {getGeolocalization} = require('../utils/geoLocation.js');
+const IP = require('ip');
 
 const getParkings = async (req, res, next) => {
 	let location = req.query.location;
 	const score = Number(req.query.score) || 3;
 	const offset = req.query.offset ? Number(req.query.offset) : 0;
 	const limit = req.query.limit ? Number(req.query.limit) : 6;
-
+	let ipAddress = IP.address();
+	console.log(ipAddress, 'IP');
 	try {
-		if (!location && req.ip != '::1') {
-			console.log(req.ip, 'IP');
-			console.log(req.socket.remoteAddress, 'socket ip');
-			const geoData = await getGeolocalization(req.socket.remoteAddress);
-			console.log(geoData);
+		if (!location) {
+			ipAddress = ipAddress
+				? ipAddress != process.env.LOCAL_IP
+				: process.env.DEFAULT_IP;
+			const geoData = await getGeolocalization(ipAddress);
 			location = geoData.city || geoData.country;
 			console.log('Geolocalizado:', location);
-		} else if (!location) {
-			res.status(400).send({response: {}, message: 'Bad Request'});
 		} else {
 			const {data} = await makeRequest(location);
 			const businessesInfo = mapper(data.businesses);
