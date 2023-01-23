@@ -9,15 +9,12 @@ const getParkings = async (req, res, next) => {
 	const limit = req.query.limit ? Number(req.query.limit) : 6;
 
 	try {
-		if (!location) {
-			const ipAddress = req.ip;
-			const geoData = await getGeolocalization(ipAddress);
+		if (!location && req.ip != '::1') {
+			const geoData = await getGeolocalization(req.ip);
 			location = geoData.city || geoData.country;
-			if (!location) {
-				res.status(400).send({response: {}, message: 'Bad Request'});
-			} else {
-				console.log('Geolocalizado:', location);
-			}
+			console.log('Geolocalizado:', location);
+		} else if (!location) {
+			res.status(400).send({response: {}, message: 'Bad Request'});
 		} else {
 			const {data} = await makeRequest(location);
 			const businessesInfo = mapper(data.businesses);

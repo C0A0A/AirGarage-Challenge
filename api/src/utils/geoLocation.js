@@ -1,3 +1,4 @@
+const axios = require('axios');
 const baseUrl = process.env.GEO_BASE_URL;
 const apiKey = process.env.GEO_API_KEY;
 
