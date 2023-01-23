@@ -11,7 +11,8 @@ const getParkings = async (req, res, next) => {
 	try {
 		if (!location && req.ip != '::1') {
 			console.log(req.ip, 'IP');
-			const geoData = await getGeolocalization(req.ip);
+			console.log(req.socket.remoteAddress, 'socket ip');
+			const geoData = await getGeolocalization(req.socket.remoteAddress);
 			console.log(geoData);
 			location = geoData.city || geoData.country;
 			console.log('Geolocalizado:', location);
