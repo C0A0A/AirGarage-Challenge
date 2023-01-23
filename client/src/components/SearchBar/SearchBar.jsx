@@ -8,8 +8,8 @@ const SearchBar = () => {
 	const dispatch = useDispatch();
 	const [state, setState] = useState({
 		location: '',
-		score: 2.5,
-		limit: 6,
+		score: 3,
+		limit: 6
 	});
 
 	return (
@@ -48,7 +48,7 @@ const SearchBar = () => {
 					className='filter-input'
 					type='number'
 					min='0'
-					max='5'
+					max='6'
 					value={state.limit}
 					onChange={(e) => handleInput(e, setState)}
 				/>
