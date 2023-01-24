@@ -9,7 +9,6 @@ const getGeolocalization = async (ipAddress) => {
 		);
 		return data;
 	} catch (err) {
-		console.log(err);
 		return {};
 	}
 };

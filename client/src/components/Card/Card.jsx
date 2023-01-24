@@ -15,7 +15,7 @@ const Card = ({parking}) => {
 					src={
 						parking.image_url
 							? parking.image_url
-							: 'https://res.cloudinary.com/g1-ecommerce/image/upload/v1627090760/Image_not_available_vcwcnj.png'
+							: 'https://res.cloudinary.com/c0a0a/image/upload/v1674562208/Air-Garage/Image_not_available_tauzsh.png'
 					}
 					alt={parking.name + ' parking lot'}
 				/>

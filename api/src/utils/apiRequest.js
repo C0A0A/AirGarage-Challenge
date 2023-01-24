@@ -5,12 +5,12 @@ const makeRequest = (location) => {
 	const config = {
 		method: 'get',
 		baseURL: `${YELP_BASE_URL}?location=${location}&categories=parking`,
-		headers: {Authorization: `Bearer ${YELP_API_KEY}`},
+		headers: {Authorization: `Bearer ${YELP_API_KEY}`}
 	};
 
 	return axios(config);
 };
 
 module.exports = {
-	makeRequest,
+	makeRequest
 };

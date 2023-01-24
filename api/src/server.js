@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const server = express();
 const morgan = require('morgan');
@@ -6,7 +5,6 @@ const cors = require('cors');
 const routes = require('./routes/index.js');
 const errors = require('./middlewares/errors.js');
 
-server.set('trust proxy', true);
 server.use(express.json());
 server.use(morgan('dev'));
 server.use(

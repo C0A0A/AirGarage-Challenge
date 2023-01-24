@@ -4,16 +4,12 @@ export const handleInput = (e, setState) => {
 	setState((prevState) => {
 		return {
 			...prevState,
-			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value
 		};
 	});
 };
 
-export const handleSearch = (dispatch, state, setState) => {
+export const handleSearch = (dispatch, state) => {
 	const {location, score, limit} = state;
-	if (location) {
-		dispatch(getParkings(location, score, limit));
-	} else {
-		alert('Please enter a location');
-	}
+	dispatch(getParkings(location, score, limit));
 };

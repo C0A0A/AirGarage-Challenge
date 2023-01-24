@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 import './searchBar.css';
 import {handleInput, handleSearch} from './utils';
@@ -11,6 +11,10 @@ const SearchBar = () => {
 		score: 3,
 		limit: 6
 	});
+
+	useEffect(() => {
+		handleSearch(dispatch, state, setState);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	return (
 		<div className='search-container'>
@@ -26,7 +30,7 @@ const SearchBar = () => {
 					<div className='icon-div'>
 						<FaSearchLocation
 							className='icon-search'
-							onClick={() => handleSearch(dispatch, state, setState)}
+							onClick={() => handleSearch(dispatch, state)}
 						/>
 					</div>
 				</div>
