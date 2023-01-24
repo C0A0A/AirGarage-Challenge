@@ -11,6 +11,7 @@ const getParkings = async (req, res, next) => {
 	const limit = req.query.limit ? Number(req.query.limit) : 6;
 	let ipAddress = requestIp.getClientIp(req).split(':');
 	ipAddress = ipAddress[ipAddress.length - 1];
+	console.log('IP', ipAddress);
 	try {
 		if (!location) {
 			if (ipAddress === LOCAL_IP) {
